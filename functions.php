@@ -108,29 +108,61 @@ function bootstrapwp_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'bootstrapwp' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'bootstrapwp' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="widget widget-container %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'after_title'   => '</h2><hr>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget 1', 'bootstrapwp' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add widgets here.', 'bootstrapwp' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4><hr>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget 2', 'bootstrapwp' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add widgets here.', 'bootstrapwp' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4><hr>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget 3', 'bootstrapwp' ),
+		'id'            => 'footer-3',
+		'description'   => esc_html__( 'Add widgets here.', 'bootstrapwp' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4><hr>',
 	) );
 }
 add_action( 'widgets_init', 'bootstrapwp_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
- */
-function bootstrapwp_scripts() {
-	wp_enqueue_style( 'bootstrapwp-style', get_stylesheet_uri() );
+add_action( 'widgets_init', 'wpdocs_register_widgets' );
 
-	wp_enqueue_script( 'bootstrapwp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'bootstrapwp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+function wpdocs_register_widgets() {
+    register_widget( 'My_Widget' );
 }
-add_action( 'wp_enqueue_scripts', 'bootstrapwp_scripts' );
+
+/**
+ * Setup - Enqueue
+ */
+require get_template_directory() . '/inc/Setup/enqueue.php';
+
+/**
+ * Loading -> Classes
+ */
+require get_template_directory() . '/inc/Classes/class-bootstrap-navwalker.php';
+
+/**
+ * Custom Widgets
+ */
+require get_template_directory() . '/inc/Widgets/Address-Widget.php';
 
 /**
  * Implement the Custom Header feature.

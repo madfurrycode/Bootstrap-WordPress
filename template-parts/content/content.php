@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" class="entry-container <?php post_class(); ?>">
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -17,18 +17,10 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
+		?>
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				bootstrapwp_posted_on();
-				bootstrapwp_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
 	</header><!-- .entry-header -->
-
+	<hr>
 	<?php bootstrapwp_post_thumbnail(); ?>
 
 	<div class="entry-content">
@@ -52,8 +44,16 @@
 		) );
 		?>
 	</div><!-- .entry-content -->
-
+	<hr>
 	<footer class="entry-footer">
-		<?php bootstrapwp_entry_footer(); ?>
+		<?php
+			if ( 'post' === get_post_type() ) :
+			?>
+			<span class="entry-footer-links">
+				<?php
+					echo bootstrapwp_entry_footer_meta();
+				?>
+			</span><!-- .entry-meta -->
+		<?php endif; ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

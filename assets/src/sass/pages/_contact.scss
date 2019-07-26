@@ -1,0 +1,31 @@
+.contact-form-container {
+  padding: 40px;
+  background-color: #fff;
+  .contact-form-title {
+    font-size: 40px;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  .btn {
+    border-radius: 0;
+  }
+  .btn-primary {
+    background-color: #333;
+    border-color: #333;
+    &:hover {
+      background-color: #222;
+      border-color: #222;
+    }
+    &:focus:hover {
+      outline: none;
+      box-shadow: 0;
+    }
+    &:active {
+      outline: none;
+      box-shadow: none;
+      background-color: #333;
+      border-color: #222;
+    }
+  }
+}

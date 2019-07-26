@@ -1,0 +1,20 @@
+/* Site Header */
+
+.site-header {
+  .site-branding {
+    padding: 10px 0px 10px 20px;
+    .site-title {
+      font-size: 40px;
+      a {
+        color: #333;
+        &:hover {
+          color: #555;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/* Import Navigation Styling */
+@import "navigation";

@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area comment-container">
 
 	<?php
 	// You can start editing here -- including this comment!
@@ -46,7 +46,6 @@ if ( post_password_required() ) {
 			?>
 		</h2><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
 
 		<ol class="comment-list">
 			<?php
@@ -68,8 +67,28 @@ if ( post_password_required() ) {
 		endif;
 
 	endif; // Check for have_comments().
-
-	comment_form();
+			$bootstrapwp_comment_field = '<div class="form-group"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" class="form-control" placeholder="'. esc_attr__('Enter your comment...*', 'wp-bootstrap-4') .'"></textarea></div>';
+			$bootstrapwp_fields =  array(
+				'author' => '<div class="form-group"><input id="author" placeholder="'. esc_attr__('Name *', 'wp-bootstrap-4') .'" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" size="30" class="form-control" required /></div>',
+				'email'  => '<div class="form-group"><input id="email" placeholder="'. esc_attr__('Email *', 'wp-bootstrap-4') .'" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) .'" size="30" class="form-control" required /></div>',
+				'url'    => '<div class="form-group"><input id="url" placeholder="'. esc_attr__('Website', 'wp-bootstrap-4') .'" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .'" size="30" class="form-control" /></div>',
+				'cookies' => '<div class="custom-control custom-checkbox form-group"><input id="cookie" name="cookie" type="checkbox" class="custom-control-input" /><label for="cookie" class="custom-control-label">Save my name, email, and website in this browser for the next time I comment.</label></div>',
+			);
+		comment_form( array(
+			'title_reply_before'   => '<h5 class="reply-title">',
+			'title_reply_after'    => '</h5>',
+			'title_reply'          => esc_html__('Leave a Reply', 'wp-bootstrap-4'),
+			'cancel_reply_link'    => esc_html__('Cancel', 'wp-bootstrap-4'),
+			'label_submit'         => esc_html__('Post Comment', 'wp-bootstrap-4'),
+			'class_submit'         => 'btn btn-block btn-primary',
+			'submit_field'         => '<div class="form-group">%1$s %2$s</div>',
+			'cancel_reply_before'  => '<small class="wb-cancel-reply">',
+			'class_form'           => 'comment-form',
+			'comment_notes_before' => '<div class="text-muted"><p>Your email address will not be published. Required fields are marked *</p></div>',
+			'comment_notes_after'  => '',
+			'comment_field'        => $bootstrapwp_comment_field,
+			'fields'               => $bootstrapwp_fields,
+		) );
 	?>
 
 </div><!-- #comments -->

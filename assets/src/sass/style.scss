@@ -1,0 +1,26 @@
+/*!
+Theme Name: Bootstrap WordPress
+Theme URI: http://tristanelliott.co.za
+Author: Tristan Elliott
+Author URI: http://tristanelliott.co.za
+Description: Bootstrap WordPress Theme
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: bootstrapwp
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+body {
+  // Tempory
+  background-color: #eee!important;
+  font-family: 'Roboto', sans-serif;
+}
+.screen-reader-text {
+  display: none;
+}
+@import "header/header";
+@import "pages/404";
+@import "pages/index";
+@import "sidebar/sidebar";
+@import "pages/pages";
+@import "footer/footer";

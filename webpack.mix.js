@@ -27,7 +27,7 @@ mix.autoload({
 mix.setPublicPath( './assets/dist' );
 
 // Compile assets
-mix.sass( 'assets/src/sass/style.scss', 'style.css' );
+mix.sass( 'assets/src/sass/style.scss', '../../style.css' );
 
 // Add versioning to assets in production environment
 if ( mix.inProduction() ) {

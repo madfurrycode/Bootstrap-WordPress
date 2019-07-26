@@ -1,0 +1,42 @@
+.comment-container {
+  padding: 40px;
+  background-color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.post-nav-container {
+  padding: 40px;
+  background-color: #fff;
+}
+
+.post-link-nav {
+  a {
+    color: #3e3e3e;
+    &:hover {
+      color: #555;
+      text-decoration: none;
+    }
+  }
+}
+.form-control {
+  border-radius: 0!important;
+}
+.btn {
+  border-radius: 0!important;
+  &:focus {
+    box-shadow: none;
+  }
+}
+.btn-primary {
+  background-color: #333!important;
+  border-color: #333!important;
+  &:hover,
+  &:hover:active {
+    background-color: #222!important;
+    border-color: #222!important;
+  }
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
